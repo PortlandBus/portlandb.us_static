@@ -1,0 +1,16 @@
+---
+- hosts: portlandbus
+  tasks:
+  - synchronize:
+    args:
+      archive: no
+      checksum: yes
+      compress: yes
+      dest: /var/www/
+      mode: push
+      partial: yes
+      recursive: yes
+      src: html
+    register: syncout
+  - debug: var=syncout.stdout_lines
+
